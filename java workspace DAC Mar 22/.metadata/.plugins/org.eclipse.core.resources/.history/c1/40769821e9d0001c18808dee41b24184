@@ -1,0 +1,35 @@
+package apps;
+
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+
+public class FileWriring {
+
+	public static void main(String[] args) 
+	{
+		OutputStream os = null;
+		BufferedReader br = null;
+		try
+		{
+			br = new BufferedReader(new InputStreamReader(System.in));
+			os = new FileOutputStream("D:/testfiles/mydata.txt");
+			String str;
+			System.out.println("Enter 'quit' to stop");
+			while(!(str=br.readLine()).equals("quit"))
+				os.write(str.getBytes());
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			br.close();
+			os.close();
+		}
+	}
+
+}
